@@ -1,3 +1,5 @@
+//EL FILTRO ES MUY ESTRICTO - CONSEGUIR QUE SI NO SELECCIONO NADA NO FILTRE
+
 console.log(poke)
 const pokelista = document.querySelector(".pokelista")
 
@@ -27,8 +29,6 @@ function arrancarEventos() {
 
     selectTipo.addEventListener("change", crearObjeto)
     selectPoder.addEventListener("change", crearObjeto)
-
-
 
 }
 
@@ -68,8 +68,8 @@ function mostrarPokemon(pokearr) {
 
 function filtrar() {
 
-    if (recibido.tipo == "vacio" && recibido.poder == "") {
-        borrarLista()
+    if (!recibido.tipo && !recibido.poder) {
+        mostrarPokemon(poke)
 
     } else {
 
@@ -86,11 +86,17 @@ function filtrar() {
 }
 
 function filtrarTipo(pokemon) {
-    return pokemon.tipo == recibido.tipo;
+    if (recibido.tipo) {
+        return pokemon.tipo == recibido.tipo;
+    }
+    return pokemon
 }
 
 function filtrarPoder(pokemon) {
-    return pokemon.poder == recibido.poder;
+    if (recibido.poder) {
+        return pokemon.poder == recibido.poder;
+    }
+    return pokemon
 }
 
 function borrarLista() {
