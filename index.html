@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="m-4">
+    <h1 class="m-2">Pokedex</h1>
+
+    <select class="form-select m-2 " id="selectTipo" aria-label="Default select example">
+        <option selected>Selecciona el tipo</option>
+        <option value="fuego">fuego</option>
+        <option value="planta">planta</option>
+        <option value="electrico">electrico</option>
+        <option value="roca">roca</option>
+      </select>
+    <select class="form-select m-2" id="selectMin" aria-label="Default select example">
+        <option selected>Selecciona el poder minimo</option>
+        <option value="100">100</option>
+        <option value="300">300</option>
+        <option value="600">600</option>
+        <option value="900">900</option>
+      </select>
+    <select class="form-select m-2" id="selectMax" aria-label="Default select example">
+        <option selected>Selecciona el poder maximo</option>
+        <option value="100">100</option>
+        <option value="300">300</option>
+        <option value="600">600</option>
+        <option value="900">900</option>
+      </select>
+
+
+    <ul class="list-group m-2 pokelista">
+
+    </ul>
+
+    <script src="js/db.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+
+</html>
