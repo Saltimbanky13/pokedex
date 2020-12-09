@@ -12,22 +12,31 @@
 <body class="m-4">
     <h1 class="m-2">Pokedex</h1>
 
-    <select class="form-select m-2 " id="selectTipo" aria-label="Default select example">
-        <option selected>Selecciona el tipo</option>
+    <select class="form-select m-2 tipo" id="selectTipo" aria-label="Default select example">
+        <option value="vacio" selected>Selecciona el tipo</option>
         <option value="fuego">fuego</option>
         <option value="planta">planta</option>
         <option value="electrico">electrico</option>
         <option value="roca">roca</option>
-      </select>
-    <select class="form-select m-2" id="selectMin" aria-label="Default select example">
-        <option selected>Selecciona el poder minimo</option>
+    </select>
+    <select class="form-select m-2 poder" id="selectMin" aria-label="Default select example">
+                <option value="vacio" selected>Selecciona el poder</option>
+                <option value="100">100</option>
+                <option value="300">250</option>
+                <option value="600">200</option>
+                <option value="900">600</option>
+                <option value="900">800</option>
+            </select>
+    <select class="form-select m-2 min" id="selectMin" aria-label="Default select example">
+        <option value="vacio" selected>Selecciona el poder minimo</option>
         <option value="100">100</option>
         <option value="300">300</option>
         <option value="600">600</option>
         <option value="900">900</option>
       </select>
-    <select class="form-select m-2" id="selectMax" aria-label="Default select example">
-        <option selected>Selecciona el poder maximo</option>
+
+    <select class="form-select m-2 max" id="selectMax" aria-label="Default select example">
+        <option value="vacio" selected>Selecciona el poder maximo</option>
         <option value="100">100</option>
         <option value="300">300</option>
         <option value="600">600</option>

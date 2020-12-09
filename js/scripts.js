@@ -3,8 +3,13 @@ const pokelista = document.querySelector(".pokelista")
 const selectMin = document.querySelector("#selectMin")
 const slectMax = document.querySelector("#selectMax")
 const selectTipo = document.querySelector("#selectTipo")
+let filtrado = [];
 
-
+const recibido = {
+    tipo: '',
+    min: '',
+    max: ''
+}
 
 
 iniciarApp()
@@ -12,27 +17,42 @@ iniciarApp()
 
 function iniciarApp() {
     arrancarEventos()
-    mostrarPokemon()
+    mostrarPokemon(poke)
 
 }
 
 function arrancarEventos() {
 
-    selectTipo.addEventListener("change", filtrarTipo)
+    selectTipo.addEventListener("change", crearObjeto)
 
 
 }
 
+function crearObjeto(e) {
 
-function mostrarPokemon() {
+    if (e.target.classList.contains("tipo")) {
 
-    poke.forEach((pokemon) => {
+        recibido.tipo = e.target.value
+        filtrar(e)
+    }
+    // if (e.target.classList.contains("poder")) {
+
+    //     recibido.poder = e.target.value
+    //     filtrar(e)
+    // }
+
+}
+
+
+function mostrarPokemon(pokearr) {
+
+    pokearr.forEach((pokemon) => {
         let pokelement = document.createElement("li")
         pokelement.classList.add("list-group-item")
         pokelement.innerHTML = `
         
         <img src= ${pokemon.img} width="50">
-        <span> ${pokemon.nombre}  --- </span>
+        <span> --- ${pokemon.nombre}  --- </span>
         <span> ${pokemon.tipo} ---  </span>
         <span> poder: ${pokemon.poder} </span>
         
@@ -41,13 +61,31 @@ function mostrarPokemon() {
     })
 }
 
-function filtrarTipo(e) {
-    console.log(e.target.value)
+function filtrar(e) {
 
-    let filtrado = poke.filter(pokemon => {
-        console.log(pokemon.tipo);
-        return pokemon.tipo == e.target.value;
-    })
+    if (recibido.tipo == "vacio" && recibido.poder == "") {
+        borrarLista()
 
-    console.log(filtrado)
+    } else {
+
+        filtrado = poke.filter(filtrarTipo) /*.filter(filtrarPoder)*/
+
+        borrarLista()
+
+        mostrarPokemon(filtrado)
+    }
+}
+
+function filtrarTipo(pokemon) {
+    return pokemon.tipo == recibido.tipo;
+}
+
+/*function filtrarPoder(pokemon) {
+    return pokemon.poder == recibido.poder;
+}*/
+
+function borrarLista() {
+    while (pokelista.children.length > 0) {
+        pokelista.firstChild.remove()
+    }
 }
