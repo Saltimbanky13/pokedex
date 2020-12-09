@@ -1,5 +1,7 @@
 console.log(poke)
 const pokelista = document.querySelector(".pokelista")
+
+const selectPoder = document.querySelector("#selectPoder")
 const selectMin = document.querySelector("#selectMin")
 const slectMax = document.querySelector("#selectMax")
 const selectTipo = document.querySelector("#selectTipo")
@@ -24,6 +26,8 @@ function iniciarApp() {
 function arrancarEventos() {
 
     selectTipo.addEventListener("change", crearObjeto)
+    selectPoder.addEventListener("change", crearObjeto)
+
 
 
 }
@@ -35,11 +39,12 @@ function crearObjeto(e) {
         recibido.tipo = e.target.value
         filtrar(e)
     }
-    // if (e.target.classList.contains("poder")) {
+    if (e.target.classList.contains("poder")) {
 
-    //     recibido.poder = e.target.value
-    //     filtrar(e)
-    // }
+        recibido.poder = e.target.value
+        console.log(recibido)
+        filtrar()
+    }
 
 }
 
@@ -61,14 +66,18 @@ function mostrarPokemon(pokearr) {
     })
 }
 
-function filtrar(e) {
+function filtrar() {
 
     if (recibido.tipo == "vacio" && recibido.poder == "") {
         borrarLista()
 
     } else {
 
-        filtrado = poke.filter(filtrarTipo) /*.filter(filtrarPoder)*/
+        console.log("llegamos al filtro...")
+
+        filtrado = poke.filter(filtrarTipo).filter(filtrarPoder)
+
+        console.log(filtrado);
 
         borrarLista()
 
@@ -80,9 +89,9 @@ function filtrarTipo(pokemon) {
     return pokemon.tipo == recibido.tipo;
 }
 
-/*function filtrarPoder(pokemon) {
+function filtrarPoder(pokemon) {
     return pokemon.poder == recibido.poder;
-}*/
+}
 
 function borrarLista() {
     while (pokelista.children.length > 0) {
